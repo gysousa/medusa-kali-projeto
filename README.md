@@ -68,7 +68,7 @@ Password Spraying:
 medusa -h <IP_DO_ALVO> -U wordlists/users.txt -p <senha_padrao> -M smbnt
 
 
-📄 Wordlists Utilizadas
+Wordlists Utilizadas
 
 wordlists/users.txt (exemplo):
 
